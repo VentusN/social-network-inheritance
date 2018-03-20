@@ -15,9 +15,9 @@ class User(object):
     def get_timeline(self):
         timeline =[]
         for user in self.following:
-            for i,post in enumerate(user.posts):
+            for post in user.posts:
               timeline.append(post)
-        return timeline
+        return sorted(timeline, key = lambda x: x.timestamp)
 
     def follow(self, other):
         self.following.append(other)
